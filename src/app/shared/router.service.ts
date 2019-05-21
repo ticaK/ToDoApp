@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class RouterService {
-  goHome(){
+  public goHome(){
     this.router.navigate(['/home']);
   }
-  goRegister(){
+  public goRegister(){
     this.router.navigate(['/register']);
   }
   constructor(private router: Router) { }

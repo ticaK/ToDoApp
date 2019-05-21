@@ -9,10 +9,16 @@ import { RouterService } from '../shared/router.service';
   styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit {
-  newUser = { name: '', email: '', password: '' };
-  constructor(private registerService: RegisterService, private routerService:RouterService ) {}
+  public newUser = { name: '', email: '', password: '' };
 
-  onSubmit() {
+  constructor(
+    private registerService: RegisterService,
+    private routerService:RouterService 
+  ) {}
+
+  public ngOnInit() {}
+
+  public onSubmit() {
     this.registerService
       .register(this.newUser)
       .pipe(first())
@@ -25,6 +31,4 @@ export class RegisterComponent implements OnInit {
         }
       );
   }
-
-  ngOnInit() {}
 }

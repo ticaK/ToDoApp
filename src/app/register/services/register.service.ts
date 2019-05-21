@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../user';
 const BASE_URL = 'http://localhost:8000/api/auth';
 
 @Injectable({
@@ -8,7 +7,7 @@ const BASE_URL = 'http://localhost:8000/api/auth';
 })
 export class RegisterService {
   constructor(private httpClient: HttpClient) {}
-  register(user:User) {
+  register(user) {
     return this.httpClient.post(`${BASE_URL}/register`, user);
   }
 }
