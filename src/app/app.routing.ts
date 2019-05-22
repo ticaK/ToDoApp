@@ -13,7 +13,13 @@ export const appRoutes: Routes = [
   {
     path: 'home',
     loadChildren: './home/home.module#HomeModule'
+    
   },
+  {
+    path:'todos',
+    loadChildren:'./todo/todo.module#TodoModule',
+  },
+  
   {
     path: '**',
     redirectTo: 'home'
