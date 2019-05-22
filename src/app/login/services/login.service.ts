@@ -21,6 +21,7 @@ export class LoginService {
       .then((res: any) => {
         if (res.data.access_token) {
           localStorage.setItem('token', res.data.access_token);
+          axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.access_token;
           this.routerService.goHome();
         }
       })
@@ -36,5 +37,6 @@ export class LoginService {
 
   public loggedIn() {
     return localStorage.getItem('token') !== null;
+
   }
 }
