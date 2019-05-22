@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './login/services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ToDoApp';
+  constructor(
+    private loginService: LoginService
+  ) {}
+
+  public logout(){
+    this.loginService.logout();
+  }
+
+  public loggedIn(){
+    return this.loginService.loggedIn();
+  }
 }

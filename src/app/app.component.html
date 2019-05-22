@@ -10,7 +10,13 @@
       <form class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <strong><a [routerLink]="['/register']">Register</a></strong>
+            <strong><a *ngIf="!loggedIn()" [routerLink]="['/register']">Register</a></strong>
+          </li>
+          <li class="nav-item">
+            <strong><a *ngIf="!loggedIn()" [routerLink]="['/login']">Login</a></strong>
+          </li>
+          <li *ngIf="loggedIn()" class="nav-item">
+            <strong><button (click)="logout()">Logout</button></strong>
           </li>
         </ul>
       </form>

@@ -5,10 +5,7 @@ import { RouterModule } from '@angular/router';
 import { registerRoutes } from './register.routing';
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(registerRoutes),
-    SharedModule
-  ],
+  imports: [RouterModule.forChild(registerRoutes), SharedModule],
   declarations: [RegisterComponent],
   exports: [RegisterComponent]
 })

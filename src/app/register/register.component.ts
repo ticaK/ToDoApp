@@ -18,13 +18,13 @@ export class RegisterComponent implements OnInit {
 
   public ngOnInit() {}
 
-  public onSubmit() {
+  public register() {
     this.registerService
       .register(this.newUser)
       .pipe(first())
       .subscribe(
         data => {
-          this.routerService.goHome();
+          this.routerService.goLogin();
         },
         error => {
           this.routerService.goRegister();
