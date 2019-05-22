@@ -16,7 +16,6 @@ export class LoginService {
   constructor(public routerService: RouterService) {}
 
   public login(user) {
-    console.log('test');
     return axios
       .post(`${BASE_URL}/login`, user)
       .then((res: any) => {

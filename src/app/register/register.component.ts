@@ -11,7 +11,10 @@ import { RouterService } from '../shared/router.service';
 export class RegisterComponent implements OnInit {
   public newUser = { name: '', email: '', password: '' };
 
-  constructor(private registerService: RegisterService, private routerService: RouterService) {}
+  constructor(
+    private registerService: RegisterService,
+    private routerService:RouterService 
+  ) {}
 
   public ngOnInit() {}
 
