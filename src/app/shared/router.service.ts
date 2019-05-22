@@ -16,4 +16,7 @@ export class RouterService {
   public goLogin() {
     this.router.navigate(['/login']);
   }
+  public goTodos() {
+    this.router.navigate(['/todos']);
+  }
 }
