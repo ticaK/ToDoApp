@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit() {
     this.loginService.userFailedAuth$.subscribe(value => {
-      console.log(value);
       this.errors = value;
     });
   }

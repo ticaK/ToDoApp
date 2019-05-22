@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class RouterService {
+  constructor(private router: Router) {}
+
   public goHome() {
     this.router.navigate(['/home']);
   }
@@ -14,5 +16,4 @@ export class RouterService {
   public goLogin() {
     this.router.navigate(['/login']);
   }
-  constructor(private router: Router) {}
 }

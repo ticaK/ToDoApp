@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login/services/login.service';
-import { RouterService } from './shared/router.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +9,11 @@ import { RouterService } from './shared/router.service';
 export class AppComponent {
   title = 'ToDoApp';
   constructor(
-    private loginService: LoginService,
-    private routerService:RouterService
+    private loginService: LoginService
   ) {}
 
   public logout(){
     this.loginService.logout();
-    this.routerService.goLogin();
   }
 
   public loggedIn(){

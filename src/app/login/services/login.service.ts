@@ -20,7 +20,6 @@ export class LoginService {
     return axios
       .post(`${BASE_URL}/login`, user)
       .then((res: any) => {
-        console.log(res);
         if (res.data.access_token) {
           localStorage.setItem('token', res.data.access_token);
           this.routerService.goHome();
@@ -33,6 +32,7 @@ export class LoginService {
 
   public logout() {
     localStorage.removeItem('token');
+    this.routerService.goLogin();
   }
 
   public loggedIn() {
