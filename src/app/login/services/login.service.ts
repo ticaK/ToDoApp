@@ -37,5 +37,6 @@ export class LoginService {
 
   public loggedIn() {
     return localStorage.getItem('token') !== null;
+
   }
 }
