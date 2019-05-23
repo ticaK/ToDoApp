@@ -15,10 +15,16 @@ export class TodoService {
   getTodo(id) {
     return axios.get(`${BASE_URL}/todos/${id}`);
   }
+
   deleteTodo(id) {
     return axios.delete(`${BASE_URL}/todos/${id}`);
   }
+
   createTodo(todo) {
-    return axios.post(`${BASE_URL}/todos`,todo);
+    return axios.post(`${BASE_URL}/todos`, todo);
+  }
+
+  editTodo(todo) {
+    return axios.put(`${BASE_URL}/todos/${todo.id}`, todo);
   }
 }

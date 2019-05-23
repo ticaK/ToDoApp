@@ -4,12 +4,20 @@
       <div id="create-row" class="row justify-content-center align-items-center">
         <div id="create-column" class="col-md-6">
           <div id="create-box" class="col-md-12">
-            <form (submit)="createTodo()" method="post" class="form" ngNativeValidate>
-              <h3 class="text-center text-info">Create new ToDo item</h3>
+            <form (submit)="onSubmit()" method="post" class="form" ngNativeValidate>
+              <h3 *ngIf="!newTodo.id" class="text-center text-info">Create new ToDo item</h3>
+              <h3 *ngIf="newTodo.id" class="text-center text-info">Edit ToDo item</h3>
 
               <div class="form-group">
                 <label for="title" class="text-info">Title</label>
-                <input [(ngModel)]="newTodo.title" type="text" name="title" id="title" class="form-control" />
+                <input
+                  [(ngModel)]="newTodo.title"
+                  type="text"
+                  name="title"
+                  id="title"
+                  [value]="newTodo.title"
+                  class="form-control"
+                />
               </div>
               <div *ngIf="errors">
                 <div class="alert alert-danger">{{ errors.title[0] }}</div>
@@ -22,6 +30,7 @@
                   name="description"
                   type="description"
                   id="description"
+                  [value]="newTodo.description"
                   class="form-control"
                 />
               </div>
@@ -41,7 +50,7 @@
                   <option [value]="0">No</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-success">Create</button>
+              <button type="submit" class="btn btn-success">Submit</button>
             </form>
           </div>
         </div>

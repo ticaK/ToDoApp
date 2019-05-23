@@ -23,4 +23,21 @@ export class TodoComponent implements OnInit {
         console.log(error);
       });
   }
+
+  changeCompletedStatus(todo) {
+    todo.completed = !todo.completed;
+    this.todoService
+      .editTodo(todo)
+      .then((result: any) => {
+        result.data.completed;
+      })
+      .catch(error => console.log(error));
+  }
+
+  completedItem(todo) {
+    if (todo.completed) {
+      return true;
+    }
+    return false;
+  }
 }

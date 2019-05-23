@@ -1,5 +1,9 @@
 <div class="container">
   <ul *ngFor="let todo of todos">
-    <li><a [routerLink]="['/todos/' + todo.id]">{{ todo.title }}</a></li>
+    <li>
+      <a [routerLink]="['/todos/' + todo.id]">{{ todo.title }}</a>
+      <button *ngIf="!completedItem(todo)" (click)="changeCompletedStatus(todo)">Not completed</button>
+      <button *ngIf="completedItem(todo)" (click)="changeCompletedStatus(todo)">Completed</button>
+    </li>
   </ul>
 </div>

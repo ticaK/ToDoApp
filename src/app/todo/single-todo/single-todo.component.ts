@@ -9,10 +9,14 @@ import { RouterService } from 'src/app/shared/router.service';
   styleUrls: ['./single-todo.component.sass']
 })
 export class SingleTodoComponent implements OnInit {
-  public todo = {};
+  public todo = {completed:null};
   public currentUserId = this.route.snapshot.paramMap.get('id');
 
-  constructor(public todoService: TodoService, public route: ActivatedRoute, public routerService: RouterService) {}
+  constructor(
+    public todoService: TodoService,
+    public route: ActivatedRoute,
+    public routerService: RouterService
+  ) {}
 
   ngOnInit() {
     this.getTodo(this.currentUserId);
