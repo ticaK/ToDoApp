@@ -9,8 +9,9 @@ import { RouterService } from 'src/app/shared/router.service';
   styleUrls: ['./single-todo.component.sass']
 })
 export class SingleTodoComponent implements OnInit {
-  public todo = {completed:null};
+  public todo = { completed: true };
   public currentUserId = this.route.snapshot.paramMap.get('id');
+  public isCompleted = '';
 
   constructor(
     public todoService: TodoService,
@@ -25,17 +26,26 @@ export class SingleTodoComponent implements OnInit {
   getTodo(id) {
     this.todoService
       .getTodo(id)
-      .then((result: any) => (this.todo = result.data))
+      .then((result: any) => {
+        this.todo = result.data;
+        if (this.todo.completed) {
+          this.isCompleted = 'true';
+        } else {
+          this.isCompleted = 'false';
+        }
+      })
       .catch(error => {
         console.log(error);
       });
   }
   deleteTodo() {
-    this.todoService
-      .deleteTodo(this.currentUserId)
-      .then((result: any) => this.routerService.goTodos())
-      .catch(error => {
-        console.log(error);
-      });
+    if (confirm('Do you really want to delete this item?')) {
+      this.todoService
+        .deleteTodo(this.currentUserId)
+        .then((result: any) => this.routerService.goTodos())
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 }

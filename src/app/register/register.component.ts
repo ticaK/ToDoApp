@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './services/register.service';
-import { first } from 'rxjs/operators';
-import { RouterService } from '../shared/router.service';
 
 @Component({
   selector: 'app-register',
@@ -10,25 +8,17 @@ import { RouterService } from '../shared/router.service';
 })
 export class RegisterComponent implements OnInit {
   public newUser = { name: '', email: '', password: '' };
+  public errors = {};
 
-  constructor(
-    private registerService: RegisterService,
-    private routerService:RouterService 
-  ) {}
+  constructor(private registerService: RegisterService) {}
 
-  public ngOnInit() {}
+  public ngOnInit() {
+    this.registerService.userFailedRegister$.subscribe(value => {
+      this.errors = value;
+    });
+  }
 
   public register() {
-    this.registerService
-      .register(this.newUser)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.routerService.goLogin();
-        },
-        error => {
-          this.routerService.goRegister();
-        }
-      );
+    this.registerService.register(this.newUser);
   }
 }

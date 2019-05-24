@@ -1,8 +1,13 @@
 <div class="container">
-  <h3>{{ todo.title }}</h3>
-  <p>Description:{{ todo.description }}</p>
-  <p>Priority:{{ todo.priority }}</p>
-	<p>Completed:{{ todo.completed }}</p>
-  <button (click)="deleteTodo()">Delete</button>
-  <a [routerLink]="['/todos/'+ todo.id +'/edit']">Edit</a>
+  <h3 class="todo-title">{{ todo.title }}</h3>
+  <h4 class="title">Description:</h4>
+  <p class="details">
+    {{ todo.description }}
+  </p>
+  <h4 class="title">Priority:</h4>
+  <p class="details">{{ todo.priority }}</p>
+  <h4 class="title">Completed:</h4>
+  <p class="details">{{ isCompleted }}</p>
+  <button (click)="deleteTodo()" class="btn btn-danger">Delete</button>
+  <button class="btn btn-light"><a [routerLink]="['/todos/' + todo.id + '/edit']">Edit</a></button>
 </div>

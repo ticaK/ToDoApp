@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
 import axios from 'axios';
 import { RouterService } from 'src/app/shared/router.service';
 import { Subject } from 'rxjs';
@@ -10,8 +8,8 @@ const BASE_URL = 'http://localhost:8000/api/auth';
   providedIn: 'root'
 })
 export class LoginService {
-  private _userFailedAuth = new Subject();
-  public userFailedAuth$ = this._userFailedAuth.asObservable();
+  private _userFailedLogin = new Subject();
+  public userFailedLogin$ = this._userFailedLogin.asObservable();
 
   constructor(public routerService: RouterService) {}
 
@@ -26,7 +24,7 @@ export class LoginService {
         }
       })
       .catch(err => {
-        this._userFailedAuth.next(err.response.data.error);
+        this._userFailedLogin.next(err.response.data.error);
       });
   }
 
@@ -37,6 +35,5 @@ export class LoginService {
 
   public loggedIn() {
     return localStorage.getItem('token') !== null;
-
   }
 }
