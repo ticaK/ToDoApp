@@ -18,6 +18,7 @@
                   [value]="newTodo.title"
                   class="form-control"
                 />
+
               </div>
               <div *ngIf="errors">
                 <div class="alert alert-danger">{{ errors.title[0] }}</div>
@@ -31,7 +32,7 @@
                   type="description"
                   id="description"
                   [value]="newTodo.description"
-                  class="form-control"
+                class="form-control"
                 />
               </div>
 
@@ -51,6 +52,7 @@
                 </select>
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
+              
             </form>
           </div>
         </div>

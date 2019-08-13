@@ -6,4 +6,5 @@ export const createRoutes: Routes=[
     path:"",
     component:CreateComponent
   }
+
 ]
