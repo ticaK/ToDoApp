@@ -3,5 +3,6 @@
   <p>Description:{{ todo.description }}</p>
   <p>Priority:{{ todo.priority }}</p>
 	<p>Completed:{{ todo.completed }}</p>
-	<button (click)="deleteTodo()">Delete</button>
+  <button (click)="deleteTodo()">Delete</button>
+  <a [routerLink]="['/todos/'+ todo.id +'/edit']">Edit</a>
 </div>

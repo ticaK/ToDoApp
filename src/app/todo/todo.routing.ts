@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { TodoComponent } from './todo.component';
 import { SingleTodoComponent } from './single-todo/single-todo.component';
 import { TodoIndexComponent } from './index.component';
+import { CreateComponent } from './create/create.component';
 
 export const todoRoutes: Routes = [
   {
@@ -14,7 +15,10 @@ export const todoRoutes: Routes = [
       },
       {
         path: ':id',
-        component: SingleTodoComponent
+        component: SingleTodoComponent,
+      }, {
+        path: ':id/edit',
+        component: CreateComponent
       }
     ]
   }

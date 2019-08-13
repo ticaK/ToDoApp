@@ -5,10 +5,11 @@ import { todoRoutes } from './todo.routing';
 import { TodoComponent } from './todo.component';
 import { SingleTodoComponent } from './single-todo/single-todo.component';
 import { TodoIndexComponent } from './index.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [TodoComponent,SingleTodoComponent, TodoIndexComponent],
-  imports: [CommonModule, RouterModule.forChild(todoRoutes)],
-  exports: [TodoComponent,SingleTodoComponent]
+  declarations: [TodoComponent, SingleTodoComponent, TodoIndexComponent],
+  imports: [CommonModule, RouterModule.forChild(todoRoutes), SharedModule],
+  exports: [TodoComponent, SingleTodoComponent]
 })
 export class TodoModule {}
