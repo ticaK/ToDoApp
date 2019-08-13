@@ -18,4 +18,7 @@ export class TodoService {
   deleteTodo(id) {
     return axios.delete(`${BASE_URL}/todos/${id}`);
   }
+  createTodo(todo) {
+    return axios.post(`${BASE_URL}/todos`,todo);
+  }
 }
