@@ -8,8 +8,8 @@ const BASE_URL = 'http://localhost:8000/api/auth';
 export class TodoService {
   constructor(public routerService: RouterService) {}
 
-  getAll() {
-    return axios.get(`${BASE_URL}/todos`);
+  getAll(completed) {
+    return axios.get(`${BASE_URL}/todos?completed=${completed}`);
   }
 
   getTodo(id) {
@@ -27,4 +27,3 @@ export class TodoService {
   editTodo(todo) {
     return axios.put(`${BASE_URL}/todos/${todo.id}`, todo);
   }
-}

@@ -6,10 +6,13 @@ import { TodoComponent } from './todo.component';
 import { SingleTodoComponent } from './single-todo/single-todo.component';
 import { TodoIndexComponent } from './index.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuard } from 'src/app/shared/auth-guard.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [TodoComponent, SingleTodoComponent, TodoIndexComponent],
-  imports: [CommonModule, RouterModule.forChild(todoRoutes), SharedModule],
-  exports: [TodoComponent, SingleTodoComponent]
+  imports: [CommonModule, RouterModule.forChild(todoRoutes), SharedModule, NgxPaginationModule],
+  exports: [TodoComponent, SingleTodoComponent],
+  providers: [AuthGuard]
 })
 export class TodoModule {}

@@ -1,9 +1,36 @@
 <div class="container">
-  <ul *ngFor="let todo of todos">
-    <li>
-      <a [routerLink]="['/todos/' + todo.id]">{{ todo.title }}</a>
-      <button *ngIf="!completedItem(todo)" (click)="changeCompletedStatus(todo)">Not completed</button>
-      <button *ngIf="completedItem(todo)" (click)="changeCompletedStatus(todo)">Completed</button>
-    </li>
-  </ul>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="row">
+          <div class="col">
+            <h2 class="main-title">My To Do List</h2>
+          </div>
+          <div class="col-buttons">
+            <button class="btn btn-light" (click)="getTodos()">All</button>
+            <button class="btn btn-light" (click)="getTodos('1')">Completed</button>
+            <button class="btn btn-light" (click)="getTodos('0')">Uncompleted</button>
+          </div>
+        </div>
+      </div>
+      <ul
+        *ngFor="let todo of todos | paginate: { itemsPerPage: n, currentPage: p }"
+        class="list-group list-group-flush"
+      >
+        <li class="list-group-item">
+          <input type="checkbox" class="todo-checkbox" (click)="completeItem(todo)" [(ngModel)]="todo.completed" />
+
+          <a [routerLink]="['/todos/' + todo.id]"
+            ><span class="todo-title" [ngClass]="{ 'todo-complete': todo.completed }">
+              {{ todo.title }}
+            </span></a
+          >
+        </li>
+      </ul>
+      <div *ngIf="allowPagination()">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+      </div>
+    </div>
+  </div>
 </div>

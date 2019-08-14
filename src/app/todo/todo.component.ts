@@ -7,37 +7,45 @@ import { TodoService } from './services/todo.service';
   styleUrls: ['./todo.component.sass']
 })
 export class TodoComponent implements OnInit {
-  public todos: null;
+  public todos = [];
+  public isCompleted = '';
+  public p = 1;
+  public n = 3;
+  public isAll = true;
 
   constructor(public todoService: TodoService) {}
 
-  ngOnInit() {
-    this.getTodos();
+  public ngOnInit() {
+    this.getTodos(this.isCompleted);
   }
 
-  getTodos() {
+  public getTodos(completed) {
+    this.p = 1;
     this.todoService
-      .getAll()
-      .then((result: any) => (this.todos = result.data))
+      .getAll(completed)
+      .then((result: any) => {
+        this.todos = result.data;
+        this.isAll = !!completed === false;
+      })
       .catch(error => {
         console.log(error);
       });
   }
 
-  changeCompletedStatus(todo) {
+  public completeItem(todo) {
     todo.completed = !todo.completed;
     this.todoService
       .editTodo(todo)
       .then((result: any) => {
-        result.data.completed;
+        if (this.isAll) {
+          return;
+        }
+        this.todos = this.todos.filter(todo => todo.id !== result.data.id);
       })
       .catch(error => console.log(error));
   }
 
-  completedItem(todo) {
-    if (todo.completed) {
-      return true;
-    }
-    return false;
+  public allowPagination() {
+    return this.todos && this.n < this.todos.length;
   }
 }

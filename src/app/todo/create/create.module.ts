@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CreateComponent } from './create.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { createRoutes } from './create.routing';
+import { AuthGuard } from 'src/app/shared/auth-guard.service';
 
 @NgModule({
-  declarations: [CreateComponent],
+  declarations: [],
   imports: [RouterModule.forChild(createRoutes), SharedModule],
-  exports:[CreateComponent]
+  providers: [AuthGuard]
+
 })
 export class CreateModule { }

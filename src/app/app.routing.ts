@@ -11,12 +11,12 @@ export const appRoutes: Routes = [
     loadChildren: './login/login.module#LoginModule'
   },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomeModule'
+    path: 'todos',
+    loadChildren: './todo/todo.module#TodoModule'
   },
   {
-    path:'todos',
-    loadChildren:'./todo/todo.module#TodoModule',
+    path: 'create',
+    loadChildren: './todo/create/create.module#CreateModule'
   },
   {
     path:'create',
@@ -24,7 +24,7 @@ export const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: '/login'
   }
 ];
 export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);

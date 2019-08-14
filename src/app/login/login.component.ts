@@ -10,13 +10,13 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   public logUser = { email: '', password: '' };
-  public errors = null;
+  public error = null;
 
   constructor(private loginService: LoginService) {}
 
   public ngOnInit() {
-    this.loginService.userFailedAuth$.subscribe(value => {
-      this.errors = value;
+    this.loginService.userFailedLogin$.subscribe(value => {
+      this.error = value;
     });
   }
 
