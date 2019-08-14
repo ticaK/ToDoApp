@@ -27,4 +27,3 @@ export class TodoService {
   editTodo(todo) {
     return axios.put(`${BASE_URL}/todos/${todo.id}`, todo);
   }
-}

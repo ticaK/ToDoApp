@@ -19,6 +19,10 @@ export const appRoutes: Routes = [
     loadChildren: './todo/create/create.module#CreateModule'
   },
   {
+    path:'create',
+    loadChildren:'./todo/create/create.module#CreateModule',
+  },
+  {
     path: '**',
     redirectTo: '/login'
   }

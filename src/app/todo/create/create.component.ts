@@ -32,7 +32,6 @@ export class CreateComponent implements OnInit {
     }
     this.createTodo();
   }
-
   public createTodo() {
     this.todoService
       .createTodo(this.newTodo)

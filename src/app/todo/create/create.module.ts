@@ -8,5 +8,6 @@ import { AuthGuard } from 'src/app/shared/auth-guard.service';
   declarations: [],
   imports: [RouterModule.forChild(createRoutes), SharedModule],
   providers: [AuthGuard]
+
 })
 export class CreateModule { }
